@@ -6,7 +6,14 @@
       <p>{{ hero.name }}</p>
     </form>
     <form v-if="scene.options" @submit.prevent="next">
-      <button v-for="(option, i) in scene.options" :key="i" @click="select(option)">{{ option }}</button>
+      <div class="options">
+        <div
+          v-for="(option, i) in scene.options"
+          :key="i"
+          @click="select(option)"
+          class="button"
+        >{{ option }}</div>
+      </div>
     </form>
     <div class="text" @click="next" v-if="!scene.monster">
       <span v-show="scene.speaker">{{ scene.speaker }}:</span>
@@ -164,5 +171,22 @@ a {
   width: 600px;
   padding: 20px;
   text-align: left;
+}
+
+.button {
+  cursor: pointer;
+  padding: 10px;
+  border-color: #FFF;
+  border-style: solid;
+  border-width: 1px;
+  border-radius: 8px;
+  margin: 5px 0;
+  display: inline-block;
+  width: 290px;
+}
+
+.options {
+  display: inline-block;
+  width: 640px;
 }
 </style>
